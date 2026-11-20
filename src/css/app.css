@@ -1,0 +1,328 @@
+/* =====================================================================
+   Food Delivery - design system v2
+   Fonte: tela di design "Food Delivery - Redesign" (token, componenti, stati).
+   Colori = token -fd-*; dark.css ridefinisce solo i token.
+   Font inclusi in /fonts (OFL); i nomi di famiglia sono quelli che JavaFX
+   legge dai file statici:
+     Display  "Fredoka Light SemiBold"  (titoli, prezzi)
+     Logo     "Fredoka Light" bold
+     Testo    "Nunito Sans 12pt ExtraLight 12pt" (regular e bold)
+     Testo XB "Nunito Sans 12pt ExtraLight 12pt ExtraBold"
+   ===================================================================== */
+
+.root {
+    /* Brand (invariati dal progetto originale) */
+    -fd-orange: #EA641E;
+    -fd-amber: #FFB83F;
+    -fd-amber-hover: #FFA91A;
+    -fd-cream: #FFF2B2;
+    -fd-cta: #CC5500;
+    -fd-cta-hover: #B34A00;
+    -fd-on-amber: #3B1E00;
+    -fd-cream-ink: #6B3A00;
+
+    /* Neutri caldi */
+    -fd-canvas: #FFF8EE;
+    -fd-surface: #FFFFFF;
+    -fd-surface-alt: #FFF8EE;
+    -fd-border: #EFE3D0;
+    -fd-border-strong: #DCCDB8;
+    -fd-ink: #2B2118;
+    -fd-muted: #6B5B4B;
+
+    /* Stato */
+    -fd-success: #1E7E34;
+    -fd-success-bg: #E6F4EA;
+    -fd-danger: #C62828;
+    -fd-disabled-bg: #F1E6D6;
+    -fd-disabled-ink: #9C8B78;
+    -fd-shadow: rgba(90, 45, 0, 0.12);
+    -fd-hover-tint: rgba(204, 85, 0, 0.08);
+
+    -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt";
+    -fx-font-size: 15px;
+    -fx-text-fill: -fd-ink;
+    -fx-background-color: -fd-canvas;
+    -fx-focus-color: -fd-orange;
+    -fx-faint-focus-color: transparent;
+    -fx-accent: -fd-orange;
+}
+
+/* ---------- Tipografia ---------- */
+.label { -fx-text-fill: -fd-ink; }
+.hero, .display, .title, .heading, .price, .price-lg, .total {
+    -fx-font-family: "Fredoka Light SemiBold";
+}
+.hero { -fx-font-size: 44px; }
+.display { -fx-font-size: 38px; }
+.title { -fx-font-size: 28px; }
+.heading { -fx-font-size: 21px; }
+.subtitle { -fx-font-size: 17px; -fx-text-fill: -fd-muted; }
+.muted { -fx-font-size: 14px; -fx-text-fill: -fd-muted; }
+.strong { -fx-font-weight: bold; }
+.xb { -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; }
+.caption { -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; -fx-font-size: 12px; -fx-text-fill: -fd-muted; }
+.field-label { -fx-font-size: 14px; -fx-font-weight: bold; }
+.price { -fx-font-size: 19px; -fx-text-fill: -fd-cta; }
+.total { -fx-font-size: 30px; }
+.qty { -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; -fx-min-width: 26px; -fx-alignment: center; }
+.error-text { -fx-text-fill: -fd-danger; -fx-font-size: 14px; -fx-font-weight: bold; }
+.success-text { -fx-text-fill: -fd-success; -fx-font-weight: bold; }
+.link-text { -fx-text-fill: -fd-cta; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; }
+
+/* ---------- Icone (SVGPath) ---------- */
+.icon {
+    -fx-fill: transparent;
+    -fx-stroke: -fd-ink;
+    -fx-stroke-width: 2.2;
+    -fx-stroke-line-cap: round;
+    -fx-stroke-line-join: round;
+}
+.icon-muted { -fx-stroke: -fd-muted; }
+.icon-cta { -fx-stroke: -fd-cta; }
+.icon-success { -fx-stroke: -fd-success; }
+.icon-white { -fx-stroke: white; }
+.icon-on-amber { -fx-stroke: -fd-on-amber; }
+.icon-danger { -fx-stroke: -fd-danger; }
+
+/* ---------- Bottoni (altezza 44, pill) ---------- */
+.button {
+    -fx-background-color: -fd-cta;
+    -fx-background-radius: 999px;
+    -fx-border-radius: 999px;
+    -fx-text-fill: white;
+    -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold";
+    -fx-font-size: 15px;
+    -fx-padding: 0 22px;
+    -fx-min-height: 44px;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 8px;
+}
+.button .icon-inherit { -fx-stroke: white; }
+.button:hover { -fx-background-color: -fd-cta-hover; }
+.button:focus-visible { -fx-border-color: -fd-orange; -fx-border-width: 2px; -fx-border-insets: -4px; }
+.button:disabled { -fx-background-color: -fd-disabled-bg; -fx-text-fill: -fd-disabled-ink; -fx-opacity: 1; }
+.button:disabled .icon-inherit { -fx-stroke: -fd-disabled-ink; }
+
+.btn-lg { -fx-min-height: 52px; -fx-font-size: 16px; }
+.btn-sm { -fx-min-height: 40px; -fx-padding: 0 16px; -fx-font-size: 14px; }
+
+.btn-secondary { -fx-background-color: -fd-amber; -fx-text-fill: -fd-on-amber; }
+.btn-secondary .icon-inherit { -fx-stroke: -fd-on-amber; }
+.btn-secondary:hover { -fx-background-color: -fd-amber-hover; }
+
+.btn-ghost { -fx-background-color: transparent; -fx-text-fill: -fd-cta; -fx-padding: 0 10px; }
+.btn-ghost .icon-inherit { -fx-stroke: -fd-cta; }
+.btn-ghost:hover { -fx-background-color: -fd-hover-tint; }
+
+.btn-outline { -fx-background-color: -fd-surface; -fx-border-color: -fd-border-strong; -fx-text-fill: -fd-ink; }
+.btn-outline .icon-inherit { -fx-stroke: -fd-ink; }
+.btn-outline:hover { -fx-background-color: -fd-surface-alt; }
+
+.back-link { -fx-background-color: transparent; -fx-text-fill: -fd-cta; -fx-padding: 0 6px 0 0; -fx-min-height: 36px; -fx-font-size: 14px; }
+.back-link .icon-inherit { -fx-stroke: -fd-cta; }
+.back-link:hover { -fx-background-color: transparent; -fx-underline: true; }
+
+.hyperlink { -fx-text-fill: -fd-success; -fx-font-weight: bold; -fx-padding: 0; -fx-border-color: transparent; }
+.hyperlink:hover { -fx-underline: true; }
+.hyperlink:visited { -fx-text-fill: -fd-success; }
+
+/* Stepper quantità */
+.stepper { -fx-background-color: -fd-cream; -fx-background-radius: 999px; -fx-padding: 4px; }
+.stepper-compact { -fx-background-color: -fd-surface-alt; -fx-background-radius: 999px; -fx-padding: 2px; }
+.stepper .qty, .stepper-compact .qty { -fx-text-fill: #2B2118; }
+.step { -fx-min-width: 32px; -fx-min-height: 32px; -fx-pref-width: 32px; -fx-pref-height: 32px; -fx-max-width: 32px; -fx-max-height: 32px; -fx-padding: 0; }
+.stepper-compact .step { -fx-min-width: 28px; -fx-min-height: 28px; -fx-pref-width: 28px; -fx-pref-height: 28px; -fx-max-width: 28px; -fx-max-height: 28px; -fx-background-color: transparent; }
+.stepper-compact .step .icon-inherit { -fx-stroke: -fd-cta; }
+.step-minus { -fx-background-color: white; }
+.step-minus .icon-inherit { -fx-stroke: #CC5500; }
+.step-minus:hover { -fx-background-color: #FFF8EE; }
+.step-plus { -fx-background-color: -fd-cta; }
+
+/* ---------- Campi ---------- */
+.text-field, .password-field {
+    -fx-background-color: -fd-surface;
+    -fx-background-radius: 8px;
+    -fx-border-color: -fd-border-strong;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 0 15px;
+    -fx-pref-height: 48px;
+    -fx-min-height: 48px;
+    -fx-font-size: 16px;
+    -fx-text-fill: -fd-ink;
+    -fx-prompt-text-fill: -fd-muted;
+    -fx-highlight-fill: -fd-amber;
+    -fx-highlight-text-fill: #2B2118;
+}
+.text-field:focused, .password-field:focused { -fx-border-color: -fd-orange; -fx-border-width: 2px; -fx-padding: 0 14px; }
+.text-field.invalid, .password-field.invalid { -fx-border-color: -fd-danger; -fx-border-width: 2px; -fx-padding: 0 14px; }
+.password-input .text-field, .password-input .password-field { -fx-padding: 0 48px 0 15px; }
+.password-input .text-field:focused, .password-input .password-field:focused { -fx-padding: 0 47px 0 14px; }
+.password-input .eye { -fx-background-color: transparent; -fx-padding: 0 14px; -fx-cursor: hand; }
+
+/* ---------- Superfici ---------- */
+.card { -fx-background-color: -fd-surface; -fx-background-radius: 20px; -fx-padding: 20px; -fx-effect: dropshadow(gaussian, -fd-shadow, 4, 0, 0, 1); }
+.section-card { -fx-background-color: -fd-surface; -fx-background-radius: 24px; -fx-padding: 28px; -fx-effect: dropshadow(gaussian, -fd-shadow, 4, 0, 0, 1); }
+.panel { -fx-background-color: -fd-surface; -fx-background-radius: 24px; -fx-padding: 24px; -fx-effect: dropshadow(gaussian, -fd-shadow, 28, 0, 0, 10); }
+.hero-card { -fx-background-color: rgba(255, 255, 255, 0.96); -fx-background-radius: 28px; -fx-padding: 48px 56px; -fx-effect: dropshadow(gaussian, rgba(90, 45, 0, 0.18), 36, 0, 0, 14); }
+.inset { -fx-background-color: -fd-surface-alt; -fx-background-radius: 16px; -fx-padding: 18px 20px; }
+.divider { -fx-background-color: -fd-border; -fx-min-height: 1px; -fx-max-height: 1px; }
+.logo-badge { -fx-background-color: #FFF2B2; -fx-background-radius: 999px; }
+.thumb-placeholder { -fx-background-color: -fd-surface-alt; -fx-background-radius: 12px; }
+.pattern-bg { -fx-background-image: url("../img/pizza-pattern.png"); -fx-background-size: cover; -fx-background-position: center; }
+.splash { -fx-background-color: #ffba42; }
+
+/* ---------- App bar ---------- */
+.app-bar { -fx-background-color: -fd-orange; -fx-padding: 0 32px; -fx-min-height: 72px; -fx-pref-height: 72px; -fx-spacing: 20px; }
+.logo-button { -fx-background-color: transparent; -fx-padding: 0; -fx-min-height: 44px; }
+.logo-button:hover { -fx-background-color: transparent; }
+.logo-text { -fx-font-family: "Fredoka Light"; -fx-font-weight: bold; -fx-font-size: 24px; -fx-text-fill: white; }
+.search-pill { -fx-background-color: white; -fx-background-radius: 999px; -fx-padding: 0 8px 0 16px; -fx-min-height: 44px; -fx-max-height: 44px; -fx-spacing: 10px; }
+.search-pill .text-field, .search-pill .text-field:focused { -fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-pref-height: 40px; -fx-min-height: 40px; -fx-font-size: 15px; -fx-text-fill: #2B2118; -fx-prompt-text-fill: #6B5B4B; }
+.search-pill .icon { -fx-stroke: #6B5B4B; }
+.ai-badge { -fx-background-color: #FFF2B2; -fx-text-fill: #6B3A00; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; -fx-font-size: 11px; -fx-padding: 4px 9px; -fx-background-radius: 999px; }
+.address-button { -fx-background-color: rgba(60, 20, 0, 0.22); -fx-text-fill: white; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt"; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 0 14px; }
+.address-button .icon-inherit { -fx-stroke: white; }
+.address-button:hover { -fx-background-color: rgba(60, 20, 0, 0.32); }
+.cart-pill { -fx-background-color: -fd-amber; -fx-text-fill: -fd-on-amber; -fx-font-size: 14px; -fx-padding: 0 16px 0 12px; }
+.cart-pill:hover { -fx-background-color: -fd-amber-hover; }
+.cart-pill .icon { -fx-stroke: #3B1E00; }
+.cart-count { -fx-background-color: -fd-cta; -fx-text-fill: white; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; -fx-font-size: 11px; -fx-padding: 0 5px; -fx-min-width: 18px; -fx-min-height: 18px; -fx-alignment: center; -fx-background-radius: 999px; }
+.cart-total { -fx-text-fill: #3B1E00; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; -fx-font-size: 14px; }
+.avatar { -fx-background-color: white; -fx-border-color: #FFF2B2; -fx-border-width: 2px; -fx-text-fill: #CC5500; -fx-font-family: "Fredoka Light"; -fx-font-weight: bold; -fx-font-size: 18px; -fx-padding: 0; -fx-min-width: 44px; -fx-max-width: 44px; }
+.avatar:hover { -fx-background-color: #FFF8EE; }
+.avatar-lg { -fx-background-color: -fd-surface; -fx-border-color: -fd-amber; -fx-border-width: 2px; -fx-border-radius: 999px; -fx-background-radius: 999px; -fx-min-width: 56px; -fx-min-height: 56px; -fx-max-width: 56px; -fx-max-height: 56px; -fx-alignment: center; -fx-text-fill: -fd-cta; -fx-font-family: "Fredoka Light"; -fx-font-weight: bold; -fx-font-size: 24px; }
+
+/* Menu a tendina (avatar, indirizzo) */
+.context-menu { -fx-background-color: -fd-surface; -fx-background-radius: 12px; -fx-padding: 8px; -fx-effect: dropshadow(gaussian, rgba(90, 45, 0, 0.22), 24, 0, 0, 8); }
+.context-menu .menu-item { -fx-padding: 10px 12px; -fx-background-radius: 8px; }
+.context-menu .menu-item .label { -fx-text-fill: -fd-ink; -fx-font-weight: bold; -fx-font-size: 14px; }
+.context-menu .menu-item:focused { -fx-background-color: -fd-surface-alt; }
+.context-menu .menu-item:focused .label { -fx-text-fill: -fd-ink; }
+.context-menu .menu-item.danger .label { -fx-text-fill: -fd-danger; }
+.context-menu .menu-header, .context-menu .menu-header:focused { -fx-background-color: transparent; -fx-padding: 6px 12px 10px 12px; }
+.context-menu .separator .line { -fx-border-color: -fd-border; -fx-border-width: 1 0 0 0; }
+.context-menu .check-box { -fx-padding: 0; }
+
+/* ---------- Chip, tile, card ---------- */
+.chip { -fx-background-color: -fd-surface-alt; -fx-text-fill: -fd-cream-ink; -fx-font-weight: bold; -fx-font-size: 12px; -fx-padding: 4px 10px; -fx-background-radius: 999px; }
+.chip-cream { -fx-background-color: #FFF2B2; -fx-text-fill: #6B3A00; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; -fx-font-size: 12px; -fx-padding: 5px 10px; -fx-background-radius: 999px; }
+.chip-success { -fx-background-color: -fd-success-bg; -fx-text-fill: -fd-success; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; -fx-font-size: 12px; -fx-padding: 5px 10px; -fx-background-radius: 999px; }
+.suggestion { -fx-background-color: -fd-surface; -fx-border-color: -fd-border-strong; -fx-text-fill: -fd-ink; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt"; -fx-font-weight: bold; -fx-font-size: 13px; -fx-min-height: 36px; -fx-padding: 0 14px; }
+.suggestion:hover { -fx-background-color: -fd-surface-alt; }
+
+.category-tile {
+    -fx-background-color: -fd-surface; -fx-border-color: -fd-border; -fx-border-width: 2px;
+    -fx-background-radius: 20px; -fx-border-radius: 20px;
+    -fx-text-fill: -fd-ink; -fx-font-size: 16px; -fx-content-display: top; -fx-graphic-text-gap: 8px;
+    -fx-min-height: 120px; -fx-pref-height: 120px; -fx-max-width: infinity; -fx-padding: 12px;
+}
+.category-tile:hover { -fx-background-color: -fd-surface-alt; }
+.category-tile:selected { -fx-background-color: #2B2118; -fx-border-color: #2B2118; -fx-text-fill: white; }
+
+.restaurant-card { -fx-background-color: -fd-surface; -fx-background-radius: 20px; -fx-padding: 0; -fx-effect: dropshadow(gaussian, -fd-shadow, 24, 0, 0, 8); -fx-alignment: top-left; }
+.restaurant-card:hover { -fx-background-color: -fd-surface; -fx-translate-y: -3px; -fx-effect: dropshadow(gaussian, rgba(90, 45, 0, 0.2), 28, 0, 0, 12); }
+.restaurant-card:focus-visible { -fx-border-color: -fd-orange; -fx-border-radius: 20px; -fx-border-insets: -4px; }
+.card-media { -fx-background-color: #FFF2B2; -fx-background-radius: 20px 20px 0 0; -fx-min-height: 150px; -fx-pref-height: 150px; }
+.card-body { -fx-padding: 16px 18px 20px 18px; -fx-spacing: 6px; }
+.card-body .label { -fx-text-fill: -fd-ink; }
+.card-body .muted { -fx-text-fill: -fd-muted; }
+.card-body .chip { -fx-text-fill: -fd-cream-ink; }
+
+.dish-card { -fx-background-color: -fd-surface; -fx-border-color: -fd-border; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-padding: 16px; -fx-spacing: 16px; -fx-alignment: center-left; }
+
+.tab-pill { -fx-background-color: -fd-surface; -fx-border-color: -fd-border-strong; -fx-text-fill: -fd-ink; -fx-font-size: 14px; -fx-min-height: 40px; -fx-padding: 0 18px; }
+.tab-pill:hover { -fx-background-color: -fd-surface-alt; }
+.tab-pill:selected { -fx-background-color: #2B2118; -fx-border-color: #2B2118; -fx-text-fill: white; }
+
+/* Scelte a scheda (indirizzo, pagamento) */
+.choice-card {
+    -fx-background-color: -fd-surface; -fx-border-color: -fd-border; -fx-border-width: 2px;
+    -fx-background-radius: 16px; -fx-border-radius: 16px; -fx-text-fill: -fd-ink;
+    -fx-min-height: 72px; -fx-max-width: infinity; -fx-padding: 14px 16px; -fx-alignment: center-left; -fx-font-size: 15px;
+}
+.choice-card:hover { -fx-background-color: -fd-surface-alt; }
+.choice-card:selected { -fx-background-color: -fd-surface-alt; -fx-border-color: -fd-cta; }
+.choice-card .label { -fx-text-fill: -fd-ink; }
+.choice-card .muted { -fx-text-fill: -fd-muted; }
+.pay-card { -fx-alignment: center; -fx-content-display: top; -fx-min-height: 84px; -fx-graphic-text-gap: 6px; }
+.radio-dot { -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px; -fx-background-radius: 999px; -fx-border-radius: 999px; -fx-border-color: -fd-disabled-ink; -fx-border-width: 2px; }
+.choice-card:selected .radio-dot { -fx-border-color: -fd-cta; -fx-border-width: 6px; }
+.step-number { -fx-background-color: #FFF2B2; -fx-text-fill: #6B3A00; -fx-background-radius: 999px; -fx-min-width: 32px; -fx-min-height: 32px; -fx-alignment: center; -fx-font-family: "Fredoka Light SemiBold"; -fx-font-size: 16px; }
+.coupon-applied { -fx-background-color: -fd-success-bg; -fx-background-radius: 12px; -fx-padding: 8px 8px 8px 16px; }
+.coupon-applied .label { -fx-text-fill: -fd-success; }
+.coupon-applied .btn-ghost { -fx-text-fill: -fd-success; }
+.info-box { -fx-background-color: -fd-surface-alt; -fx-background-radius: 12px; -fx-padding: 16px; }
+.info-box .label { -fx-text-fill: -fd-muted; -fx-font-size: 15px; }
+.success-circle { -fx-background-color: -fd-success-bg; -fx-background-radius: 999px; -fx-min-width: 88px; -fx-min-height: 88px; -fx-max-width: 88px; -fx-max-height: 88px; }
+
+/* Segmented control (accesso) */
+.segmented { -fx-background-color: -fd-disabled-bg; -fx-background-radius: 999px; -fx-padding: 4px; -fx-spacing: 0; }
+.segment { -fx-background-color: transparent; -fx-text-fill: -fd-muted; -fx-font-size: 14px; -fx-min-height: 40px; -fx-max-width: infinity; }
+.segment:hover { -fx-background-color: transparent; -fx-text-fill: -fd-ink; }
+.segment:selected { -fx-background-color: -fd-surface; -fx-text-fill: -fd-ink; -fx-effect: dropshadow(gaussian, rgba(90, 45, 0, 0.15), 3, 0, 0, 1); }
+.strength-bar { -fx-background-color: -fd-border; -fx-background-radius: 2px; -fx-min-height: 4px; -fx-max-height: 4px; }
+.strength-bar.on { -fx-background-color: -fd-success; }
+.strength-bar.weak { -fx-background-color: -fd-danger; }
+.auth-image { -fx-background-image: url("../img/food.png"); -fx-background-size: cover; -fx-background-position: center; }
+.brand-note { -fx-background-color: #FFF2B2; -fx-background-radius: 20px; -fx-padding: 24px 28px; -fx-effect: dropshadow(gaussian, rgba(90, 45, 0, 0.2), 32, 0, 0, 12); }
+.brand-note .label { -fx-text-fill: #3B1E00; }
+.brand-name { -fx-font-family: "Fredoka Light"; -fx-font-weight: bold; -fx-font-size: 22px; -fx-text-fill: -fd-cta; }
+
+/* Account */
+.nav-item { -fx-background-color: transparent; -fx-text-fill: -fd-ink; -fx-background-radius: 12px; -fx-alignment: center-left; -fx-min-height: 48px; -fx-max-width: infinity; -fx-padding: 0 16px; }
+.nav-item:hover { -fx-background-color: -fd-hover-tint; }
+.nav-item:selected { -fx-background-color: -fd-surface; -fx-text-fill: -fd-cta; -fx-effect: dropshadow(gaussian, -fd-shadow, 4, 0, 0, 1); }
+.order-card { -fx-spacing: 20px; -fx-alignment: center-left; -fx-padding: 20px 24px; }
+.list-row { -fx-padding: 16px 0; -fx-spacing: 14px; -fx-alignment: center-left; }
+
+/* Footer */
+.footer { -fx-background-color: -fd-surface; -fx-border-color: -fd-border transparent transparent transparent; -fx-padding: 20px 32px; }
+.footer .label { -fx-text-fill: -fd-muted; -fx-font-size: 13px; }
+
+/* ---------- Feedback ---------- */
+.toast { -fx-background-color: #2B2118; -fx-background-radius: 12px; -fx-padding: 12px 16px; -fx-spacing: 10px; -fx-alignment: center-left; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 16, 0, 0, 4); }
+.toast .label { -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; }
+.toast .icon { -fx-stroke: #7FD18B; }
+.empty-state { -fx-border-color: -fd-border-strong; -fx-border-style: segments(6, 6); -fx-border-radius: 20px; -fx-border-width: 1.5px; -fx-padding: 32px 20px; }
+.progress-indicator { -fx-progress-color: -fd-cta; }
+
+/* ---------- Scroll ---------- */
+.scroll-pane, .scroll-pane > .viewport { -fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0; }
+.scroll-bar { -fx-background-color: transparent; }
+.scroll-bar .thumb { -fx-background-color: rgba(90, 45, 0, 0.25); -fx-background-radius: 6px; }
+.scroll-bar .increment-button, .scroll-bar .decrement-button { -fx-padding: 0; -fx-opacity: 0; }
+
+/* ---------- Dialog ---------- */
+.dialog-pane { -fx-background-color: -fd-surface; -fx-padding: 12px; }
+.dialog-pane > .header-panel { -fx-background-color: -fd-surface; -fx-padding: 12px 12px 0 12px; }
+.dialog-pane > .header-panel .label { -fx-font-family: "Fredoka Light SemiBold"; -fx-font-size: 20px; -fx-text-fill: -fd-ink; }
+.dialog-pane > .content.label { -fx-text-fill: -fd-ink; -fx-font-size: 15px; -fx-padding: 12px; -fx-wrap-text: true; }
+.dialog-pane .button-bar .button { -fx-min-width: 110px; }
+
+/* Ricerca in evidenza (home) */
+.search-hero { -fx-background-color: white; -fx-border-color: -fd-orange; -fx-border-width: 2px; -fx-background-radius: 999px; -fx-border-radius: 999px; -fx-padding: 4px 4px 4px 20px; -fx-effect: dropshadow(gaussian, rgba(234, 100, 30, 0.18), 12, 0.3, 0, 0); }
+.search-hero .text-field, .search-hero .text-field:focused { -fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-font-size: 18px; -fx-text-fill: #2B2118; -fx-prompt-text-fill: #6B5B4B; }
+.search-hero .icon { -fx-stroke: #6B5B4B; }
+
+/* ToggleButton non è .button: stessa forma pill e font per tab, switch, tile */
+.toggle-button {
+    -fx-background-radius: 999px;
+    -fx-border-radius: 999px;
+    -fx-background-insets: 0;
+    -fx-cursor: hand;
+    -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold";
+}
+.toggle-button:focus-visible { -fx-border-color: -fd-orange; -fx-border-width: 2px; }
+.choice-card { -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt"; }
+.choice-card.pay-card { -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; }
+/* Il font si eredita: le card-bottone tornano al testo normale */
+.restaurant-card { -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt"; -fx-font-size: 15px; }
+.stepper-compact .qty { -fx-text-fill: -fd-ink; }
+.secure-note { -fx-wrap-text: true; -fx-text-alignment: center; }
+.context-menu .menu-header .muted { -fx-text-fill: -fd-muted; -fx-font-weight: normal; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt"; }
+/* Raggi propri dei componenti a scheda (vincono sulla forma pill dei ToggleButton) */
+.category-tile { -fx-background-radius: 20px; -fx-border-radius: 20px; }
+.choice-card { -fx-background-radius: 16px; -fx-border-radius: 16px; }
+.nav-item { -fx-background-radius: 12px; -fx-border-radius: 12px; -fx-font-family: "Nunito Sans 12pt ExtraLight 12pt ExtraBold"; }

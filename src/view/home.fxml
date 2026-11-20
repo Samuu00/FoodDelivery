@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<!-- Artboard "2 · Home" -->
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+    <StackPane styleClass="pattern-bg">
+        <padding><Insets top="56" right="32" bottom="72" left="32" /></padding>
+        <HBox styleClass="hero-card" spacing="32" alignment="CENTER_LEFT" maxWidth="1120">
+            <VBox spacing="20" HBox.hgrow="ALWAYS">
+                <Label fx:id="greeting" styleClass="hero" wrapText="true" />
+                <HBox fx:id="searchForm" styleClass="search-hero" spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="search" promptText="Es. pizza piccante sotto i 10 €" HBox.hgrow="ALWAYS" onAction="#onSearch" accessibleText="Cosa ti va?" />
+                    <ProgressIndicator fx:id="spinner" prefWidth="28" prefHeight="28" visible="false" managed="${spinner.visible}" />
+                    <Button fx:id="searchButton" text="Cerca" styleClass="btn-lg" onAction="#onSearch" />
+                </HBox>
+                <FlowPane fx:id="suggestions" hgap="8" vgap="8" alignment="CENTER_LEFT" />
+                <Label fx:id="hint" styleClass="muted" wrapText="true" visible="false" managed="${hint.visible}" />
+            </VBox>
+            <ImageView fitWidth="240" fitHeight="220" preserveRatio="true"><Image url="@../img/icona.png" /></ImageView>
+        </HBox>
+    </StackPane>
+
+    <VBox spacing="32" maxWidth="1184" VBox.vgrow="ALWAYS">
+        <padding><Insets top="40" right="32" bottom="56" left="32" /></padding>
+        <VBox spacing="16">
+            <Label text="Categorie" styleClass="heading" />
+            <GridPane fx:id="categories" hgap="16" />
+        </VBox>
+        <VBox spacing="16">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label fx:id="listTitle" styleClass="heading" />
+                <Button fx:id="clearSearch" text="Mostra tutti" styleClass="btn-ghost" onAction="#clearSearch" visible="false" managed="${clearSearch.visible}" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="count" styleClass="muted" />
+            </HBox>
+            <FlowPane fx:id="grid" hgap="20" vgap="20" prefWrapLength="1120" rowValignment="TOP" />
+        </VBox>
+    </VBox>
+
+    <HBox styleClass="footer" alignment="CENTER">
+        <HBox spacing="24" alignment="CENTER_LEFT" maxWidth="1120" HBox.hgrow="ALWAYS">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="Paghi con" />
+                <ImageView fitHeight="18" preserveRatio="true"><Image url="@../img/visa.png" /></ImageView>
+                <ImageView fitHeight="18" preserveRatio="true"><Image url="@../img/mastercard.png" /></ImageView>
+                <ImageView fitHeight="18" preserveRatio="true"><Image url="@../img/paypal.png" /></ImageView>
+                <Label text="o in contanti" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="Assistenza: +39 333 1234567 · support@fooddelivery.it" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="Chi siamo · Privacy e cookie" />
+        </HBox>
+    </HBox>
+</VBox>

@@ -1,0 +1,21 @@
+/* Tema scuro: stessi colori brand, cambiano solo superfici e testo. */
+.root {
+    -fd-canvas: #1C1814;
+    -fd-surface: #2A241E;
+    -fd-surface-alt: #231E19;
+    -fd-border: #3D342B;
+    -fd-border-strong: #54483C;
+    -fd-ink: #F5EDE3;
+    -fd-muted: #BFAF9C;
+    -fd-cream-ink: #FFD59A;
+    -fd-success: #7FD18B;
+    -fd-success-bg: #1F3A26;
+    -fd-danger: #FF8A80;
+    -fd-disabled-bg: #3A322A;
+    -fd-disabled-ink: #8A7B6B;
+    -fd-shadow: rgba(0, 0, 0, 0.4);
+    -fd-hover-tint: rgba(255, 184, 63, 0.10);
+}
+.pattern-bg { -fx-background-image: url("../img/pizza-pattern-dark.png"); }
+.hero-card { -fx-background-color: rgba(42, 36, 30, 0.96); }
+.tab-pill:selected, .category-tile:selected { -fx-background-color: -fd-amber; -fx-border-color: -fd-amber; -fx-text-fill: #3B1E00; }

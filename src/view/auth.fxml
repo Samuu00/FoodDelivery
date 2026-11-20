@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import ui.PasswordInput?>
+
+<!-- Artboard "1 · Accesso": pannello brand a sinistra, form a destra; login e registrazione con uno switch. -->
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthController">
+    <StackPane styleClass="auth-image" HBox.hgrow="ALWAYS" minWidth="0" alignment="BOTTOM_LEFT">
+        <padding><Insets top="48" right="48" bottom="48" left="48" /></padding>
+        <HBox styleClass="brand-note" spacing="16" alignment="CENTER_LEFT" maxWidth="460" maxHeight="-Infinity">
+            <ImageView fitWidth="72" fitHeight="72" preserveRatio="true"><Image url="@../img/icona.png" /></ImageView>
+            <VBox spacing="4">
+                <Label text="Fame? Ci pensiamo noi." styleClass="heading" />
+                <Label text="Pizza, sushi, burger e dolci dai ristoranti della tua città." wrapText="true" />
+            </VBox>
+        </HBox>
+    </StackPane>
+
+    <StackPane minWidth="560" prefWidth="620" style="-fx-background-color: -fd-canvas;">
+        <VBox spacing="22" maxWidth="400" maxHeight="-Infinity">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitWidth="40" fitHeight="40" preserveRatio="true"><Image url="@../img/pizza1.png" /></ImageView>
+                <Label text="FOOD DELIVERY" styleClass="brand-name" />
+            </HBox>
+
+            <VBox spacing="6">
+                <Label fx:id="heading" styleClass="display" />
+                <Label fx:id="subheading" styleClass="subtitle" wrapText="true" />
+            </VBox>
+
+            <fx:define><ToggleGroup fx:id="modeGroup" /></fx:define>
+            <HBox styleClass="segmented">
+                <ToggleButton fx:id="loginTab" text="Accedi" toggleGroup="$modeGroup" styleClass="segment" HBox.hgrow="ALWAYS" selected="true" />
+                <ToggleButton fx:id="registerTab" text="Crea account" toggleGroup="$modeGroup" styleClass="segment" HBox.hgrow="ALWAYS" />
+            </HBox>
+
+            <VBox spacing="16">
+                <VBox fx:id="usernameBox" spacing="6" managed="${usernameBox.visible}">
+                    <Label text="Username" styleClass="field-label" />
+                    <TextField fx:id="username" promptText="Come ti chiamiamo?" />
+                </VBox>
+                <VBox spacing="6">
+                    <Label text="Email" styleClass="field-label" />
+                    <TextField fx:id="email" promptText="nome@esempio.it" />
+                </VBox>
+                <VBox spacing="6">
+                    <HBox alignment="BOTTOM_LEFT">
+                        <Label text="Password" styleClass="field-label" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Hyperlink fx:id="forgotLink" text="Password dimenticata?" onAction="#forgotPassword" managed="${forgotLink.visible}" />
+                    </HBox>
+                    <PasswordInput fx:id="password" />
+                    <VBox fx:id="strengthBox" spacing="6" managed="${strengthBox.visible}">
+                        <HBox fx:id="strengthBars" spacing="4" />
+                        <Label fx:id="strengthText" styleClass="muted" />
+                    </VBox>
+                </VBox>
+
+                <HBox fx:id="errorBox" spacing="8" alignment="CENTER_LEFT" visible="false" managed="${errorBox.visible}">
+                    <Label fx:id="error" styleClass="error-text" wrapText="true" />
+                </HBox>
+
+                <Button fx:id="submit" styleClass="btn-lg" maxWidth="Infinity" defaultButton="true" onAction="#submit">
+                    <VBox.margin><Insets top="8" /></VBox.margin>
+                </Button>
+            </VBox>
+            <Label text="Premi Invio per continuare." styleClass="muted" maxWidth="Infinity" alignment="CENTER" />
+        </VBox>
+    </StackPane>
+</HBox>

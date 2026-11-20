@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<!-- Artboard "6 · I miei ordini": area account con navigazione laterale. -->
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController" alignment="TOP_CENTER">
+    <HBox spacing="32" maxWidth="1180" alignment="TOP_LEFT">
+        <padding><Insets top="32" right="32" bottom="56" left="32" /></padding>
+        <VBox spacing="16" minWidth="260" prefWidth="260">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <padding><Insets top="8" right="4" bottom="8" left="4" /></padding>
+                <Label fx:id="initial" styleClass="avatar-lg" />
+                <VBox>
+                    <Label fx:id="username" styleClass="heading" />
+                    <Label fx:id="email" styleClass="muted" />
+                </VBox>
+            </HBox>
+            <fx:define><ToggleGroup fx:id="tabs" /></fx:define>
+            <VBox spacing="4">
+                <ToggleButton fx:id="ordersTab" text="I miei ordini" toggleGroup="$tabs" styleClass="nav-item, xb" maxWidth="Infinity" />
+                <ToggleButton fx:id="addressesTab" text="Indirizzi di consegna" toggleGroup="$tabs" styleClass="nav-item, xb" maxWidth="Infinity" />
+            </VBox>
+        </VBox>
+        <VBox fx:id="content" spacing="20" HBox.hgrow="ALWAYS" minWidth="0" />
+    </HBox>
+</StackPane>
